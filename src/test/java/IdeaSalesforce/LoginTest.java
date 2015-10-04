@@ -13,11 +13,24 @@ import java.util.concurrent.TimeUnit;
  */
 public class LoginTest {
     //Junit --- Commenly used TestNg
-   // WebDriver driver = null;
+   public  WebDriver driver = null;
+
+    public void salesForce(String username, String password)
+    {
+        driver = new FirefoxDriver();
+        driver.get("http://www.salesforce.com/");
+        driver.manage().window().maximize();
+        driver.findElement(By.xpath(".//*[@id='button-login']")).click();
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.findElement(By.xpath(".//*[@id='username']")).sendKeys(username);
+        driver.findElement(By.xpath(".//*[@id='password']")).sendKeys(password);
+        driver.findElement(By.xpath(".//*[@id='Login']")).click();
+
+    }
     @Test
 
     public void enterValidCredentials() {
-        WebDriver driver = new FirefoxDriver();
+     /*   WebDriver driver = new FirefoxDriver();
         driver.get("http://www.salesforce.com/");
         driver.manage().window().maximize();
         driver.findElement(By.xpath(".//*[@id='button-login']")).click();
@@ -25,7 +38,10 @@ public class LoginTest {
         driver.findElement(By.xpath(".//*[@id='username']")).sendKeys("mum2be0920@gmail.com");
         driver.findElement(By.xpath(".//*[@id='password']")).sendKeys("Katakam1987");
         driver.findElement(By.xpath(".//*[@id='Login']")).click();
-       String username = driver.findElement(By.xpath(".//*[@id='userNavLabel']")).getText();
+       */
+       salesForce("", "");
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        String username = driver.findElement(By.xpath(".//*[@id='userNavLabel']")).getText();
         System.out.println(username);
         Assert.assertEquals(username, "sravani Katakam", "Username match");
         driver.quit();
@@ -34,14 +50,16 @@ public class LoginTest {
  @Test
     public void enterInvalidCredentials()
     {
-        WebDriver driver = new FirefoxDriver();
-        driver.get("http://www.salesforce.com/");
-        driver.manage().window().maximize();
-        driver.findElement(By.xpath(".//*[@id='button-login']")).click();
+//        WebDriver driver = new FirefoxDriver();
+//        driver.get("http://www.salesforce.com/");
+//        driver.manage().window().maximize();
+//        driver.findElement(By.xpath(".//*[@id='button-login']")).click();
+//        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+//        driver.findElement(By.xpath(".//*[@id='username']")).sendKeys("mum2be20@gmail.com");
+//        driver.findElement(By.xpath(".//*[@id='password']")).sendKeys("Katakam1987");
+//        driver.findElement(By.xpath(".//*[@id='Login']")).click();
+        salesForce("", "");
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        driver.findElement(By.xpath(".//*[@id='username']")).sendKeys("mum2be20@gmail.com");
-        driver.findElement(By.xpath(".//*[@id='password']")).sendKeys("Katakam1987");
-        driver.findElement(By.xpath(".//*[@id='Login']")).click();
         String errormsg = driver.findElement(By.xpath(".//*[@id='error']")).getText();
         System.out.println(errormsg);
         Assert.assertEquals(errormsg,"Your login attempt has failed. The username or password may be incorrect, or your location or login time may be restricted. Please contact the administrator at your company for help.", "Message displayed");
@@ -50,14 +68,16 @@ public class LoginTest {
     @Test
     public void salesRep()
     {
-        WebDriver driver = new FirefoxDriver();
-        driver.get("http://www.salesforce.com/");
-        driver.manage().window().maximize();
-        driver.findElement(By.xpath(".//*[@id='button-login']")).click();
+//        WebDriver driver = new FirefoxDriver();
+//        driver.get("http://www.salesforce.com/");
+//        driver.manage().window().maximize();
+//        driver.findElement(By.xpath(".//*[@id='button-login']")).click();
+//        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+//        driver.findElement(By.xpath(".//*[@id='username']")).sendKeys("mum2be0920@gmail.com");
+//        driver.findElement(By.xpath(".//*[@id='password']")).sendKeys("Katakam1987");
+//        driver.findElement(By.xpath(".//*[@id='Login']")).click();
+        salesForce("", "");
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        driver.findElement(By.xpath(".//*[@id='username']")).sendKeys("mum2be0920@gmail.com");
-        driver.findElement(By.xpath(".//*[@id='password']")).sendKeys("Katakam1987");
-        driver.findElement(By.xpath(".//*[@id='Login']")).click();
         driver.findElement(By.xpath(".//*[@id='sales-rep-choice']")).click();
         driver.findElement(By.xpath(".//*[@id='walkthrough-callout-close']/img")).click();
         driver.findElement(By.xpath(".//*[@id='walkthrough-sidebar-toggle']/img")).click();
