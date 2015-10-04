@@ -5,5 +5,10 @@ package IdeaSalesforce;
  */
 public class SalesTest {
 
-    system.out.println("This is sales Dept");
+    public void test()
+
+    {
+        System.out.println("TEST");
+    }
 }
+
