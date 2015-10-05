@@ -25,7 +25,7 @@
         <module name="Idea_SF" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="1.8">
+    <bytecodeTargetLevel>
       <module name="Idea_SF" target="1.5" />
     </bytecodeTargetLevel>
   </component>
