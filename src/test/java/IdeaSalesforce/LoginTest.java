@@ -104,54 +104,71 @@ public class LoginTest {
 //        driver.quit();
 //    }
       @Test
-        public void menuOptions()
+        public void menuOptions() {
+          salesForce("mum2be0920@gmail.com", "Katakam1987");
+
+          driver.findElement(By.xpath(".//*[@id='sales-rep-choice']/p/label")).click();
+          driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+          driver.findElement(By.xpath(".//*[@id='tsidButton']")).click();
+          String dropdown = driver.findElement(By.xpath(".//*[@id='tsidButton']")).getText();
+          Assert.assertEquals(dropdown, "Sales", "Sales");
+          System.out.println(dropdown);
+
+          String sfChatter = driver.findElement(By.xpath(".//*[@id='tsid-menuItems']/a[1]")).getText();
+          Assert.assertEquals("Salesforce Chatter", "Salesforce Chatter");
+          System.out.println(sfChatter);
+
+          String marketing = driver.findElement(By.xpath(".//*[@id='tsid-menuItems']/a[2]")).getText();
+          Assert.assertEquals("Marketing", "Marketing");
+          System.out.println(marketing);
+
+          String callCenter = driver.findElement(By.xpath(".//*[@id='tsid-menuItems']/a[3]")).getText();
+          Assert.assertEquals("CallCenter", "CallCenter");
+          System.out.println(callCenter);
+
+
+          String checkout = driver.findElement(By.xpath(".//*[@id='tsid-menuItems']/a[4]")).getText();
+          Assert.assertEquals("Checkout", "Checkout");
+          System.out.println(checkout);
+
+          String appExchange = driver.findElement(By.xpath(".//*[@id='tsid-menuItems']/a[5]")).getText();
+          Assert.assertEquals("AppExchange", "AppExchange");
+          System.out.println(appExchange);
+
+          String devCommunity = driver.findElement(By.xpath(".//*[@id='tsid-menuItems']/a[6]")).getText();
+          Assert.assertEquals("Developer Community", "Developer Community");
+          System.out.println(devCommunity);
+
+
+          String successCommunity = driver.findElement(By.xpath(".//*[@id='tsid-menuItems']/a[7]")).getText();
+          Assert.assertEquals("Success Community", "Success Community");
+          System.out.println(successCommunity);
+
+
+          driver.quit();
+      }
+
+        @Test
+        public void header()
     {
         salesForce("mum2be0920@gmail.com","Katakam1987");
+        driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
+        driver.findElement(By.id("sales-rep-choice")).click();
+        driver.findElement(By.id("walkthrough-callout-close")).click();
+        driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
+        driver.findElement(By.id("walkthrough-sidebar-toggle")).click();
 
-      driver.findElement(By.xpath(".//*[@id='sales-rep-choice']/p/label")).click();
-      driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        driver.findElement(By.xpath(".//*[@id='tsidButton']")).click();
-        String dropdown = driver.findElement(By.xpath(".//*[@id='tsidButton']")).getText();
-        Assert.assertEquals(dropdown,"Sales","Sales");
-        System.out.println(dropdown);
-
-                String sfChatter =  driver.findElement(By.xpath(".//*[@id='tsid-menuItems']/a[1]")).getText();
-        Assert.assertEquals("Salesforce Chatter" , "Salesforce Chatter");
-        System.out.println(sfChatter);
-
-        String marketing =  driver.findElement(By.xpath(".//*[@id='tsid-menuItems']/a[2]")).getText();
-        Assert.assertEquals("Marketing" , "Marketing");
-        System.out.println(marketing);
-
-        String callCenter =  driver.findElement(By.xpath(".//*[@id='tsid-menuItems']/a[3]")).getText();
-        Assert.assertEquals("CallCenter" , "CallCenter");
-        System.out.println(callCenter);
-
-
-        String checkout =  driver.findElement(By.xpath(".//*[@id='tsid-menuItems']/a[4]")).getText();
-        Assert.assertEquals("Checkout" , "Checkout");
-        System.out.println(checkout);
-
-        String appExchange =  driver.findElement(By.xpath(".//*[@id='tsid-menuItems']/a[5]")).getText();
-        Assert.assertEquals("AppExchange" , "AppExchange");
-        System.out.println(appExchange);
-
-        String devCommunity =  driver.findElement(By.xpath(".//*[@id='tsid-menuItems']/a[6]")).getText();
-        Assert.assertEquals("Developer Community" , "Developer Community");
-        System.out.println(devCommunity);
-
-
-        String successCommunity =  driver.findElement(By.xpath(".//*[@id='tsid-menuItems']/a[7]")).getText();
-        Assert.assertEquals("Success Community" , "Success Community");
-        System.out.println(successCommunity);
-
-
+       String home =  driver.findElement(By.id("home_Tab")).getText();
+        Assert.assertEquals("Home" , "Home");
+        String User = driver.findElement(By.xpath("//*[@id='ptBody']/div/div/span[1]/h1/a")).getText();
+        Assert.assertEquals("sravani Katakam" , "sravani Katakam");
+        System.out.println(home);
         driver.quit();
-
+    }
 
 
     }
-    }
+
 
 
 
