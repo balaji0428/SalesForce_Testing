@@ -4,10 +4,13 @@ package IdeaSalesforce;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.sql.Time;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -15,7 +18,10 @@ import java.util.concurrent.TimeUnit;
  */
 public class LoginTest extends BaseTest {
     //Junit --- Commenly used TestNg
-    //private WebDriver driver = null;
+//    protected WebDriver driver;
+//    public LoginTest(WebDriver dr){
+//        this.driver = dr;
+//    }
     @Test
     public void enterValidCredentials() {
         salesForce("mum2be0920@gmail.com", "Katakam1987");
@@ -64,6 +70,24 @@ public class LoginTest extends BaseTest {
               System.out.println(dropdown);
               driver.quit();
           }
+
+    @Test
+    public void verifyUserIsLoggedIn()
+    {
+        salesForce("mum2be0920@gmail.com", "Katakam1987");
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        List<WebElement> webObject = driver.findElements(By.xpath(".//*[@id='userNavLabel']"));
+
+        if(webObject.size() != 0)
+        {
+            Assert.assertTrue(false, "User not logged in");
+        }
+
+        else
+        {
+            Assert.assertTrue(true, "User logged in");
+        }
+    }
 
     @Test
     public void sfChatter() {

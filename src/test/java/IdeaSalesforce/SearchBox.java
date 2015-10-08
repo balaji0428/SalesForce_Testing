@@ -2,6 +2,7 @@ package IdeaSalesforce;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -13,7 +14,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class SearchBox extends BaseTest {
     @Test
-    public void searchBox (){
+    public void searchBox() {
 
         salesForce("mum2be0920@gmail.com", "Katakam1987");
 
@@ -21,31 +22,252 @@ public class SearchBox extends BaseTest {
         driver.findElement(By.xpath(".//*[@id='phSearchButton']")).click();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
-        String check =  driver.findElement(By.xpath(".//*[@id='User_body']/table/tbody/tr[2]/th/div/div/a")).getText();
-        Assert.assertEquals("sravani Katakam","sravani Katakam");
+        String check = driver.findElement(By.xpath(".//*[@id='User_body']/table/tbody/tr[2]/th/div/div/a")).getText();
+        Assert.assertEquals(check, "sravani Katakam");
         System.out.println(check);
 
- driver.close();
+        driver.close();
     }
+
     @Test
     public void count() {
         salesForce("mum2be0920@gmail.com", "Katakam1987");
-        Dimension xpathCount = driver.findElement(By.xpath(".//*[@id='phSearchButton']")).getSize();
-        System.out.println(xpathCount);
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.findElement(By.xpath("//div[@id='tsid-arrow']")).click();
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
+        List<WebElement> elementsList = driver.findElements(By.xpath(".//*[@id='tsid-menuItems']/a"));
 
-       List menu  elementsList = driver.findElement(By.xpath(".//*[@id='tsidButton']"))
-                System.out.println(elementsList.size());
-// for( menu checkBox:elementsList) {
-//                    int i = 0;
-//                    checkBox = elementsList.get(i);
+        System.out.println(elementsList.size());
+        System.out.println(driver.findElement(By.xpath(".//*[@id='tsid-menuItems']/a[1]")).getText());
 
-
-                }
-
-
-
-
-//        salesForce("mum2be0920@gmail.com", "Katakam1987");
+//                   for (int i = 0; i <= elementsList.size(); i++) {
+//
+//                System.out.println(elementsList.get(i).getText());
+//
+//
+//            }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
