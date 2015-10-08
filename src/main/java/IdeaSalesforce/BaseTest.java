@@ -22,13 +22,18 @@ public class BaseTest {
         driver.findElement(By.xpath(".//*[@id='username']")).sendKeys(username);
         driver.findElement(By.xpath(".//*[@id='password']")).sendKeys(password);
         driver.findElement(By.xpath(".//*[@id='Login']")).click();
+        driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 
-    }
-
-    public void menuOptions() {
-        salesForce("mum2be0920@gmail.com", "Katakam1987");
         driver.findElement(By.xpath(".//*[@id='sales-rep-choice']/p/label")).click();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.findElement(By.xpath(".//*[@id='tsidButton']")).click();
+
     }
-}
+
+//    public void menuOptions() {
+//        salesForce("mum2be0920@gmail.com", "Katakam1987");
+//        driver.findElement(By.xpath(".//*[@id='sales-rep-choice']/p/label")).click();
+//        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+//        driver.findElement(By.xpath(".//*[@id='tsidButton']")).click();
+    }
+
