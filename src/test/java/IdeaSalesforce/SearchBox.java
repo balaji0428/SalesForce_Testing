@@ -1,5 +1,6 @@
 package IdeaSalesforce;
 
+import com.sun.istack.internal.NotNull;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
@@ -40,6 +41,7 @@ public class SearchBox extends BaseTest {
 
         System.out.println(elementsList.size());
         System.out.println(driver.findElement(By.xpath(".//*[@id='tsid-menuItems']/a[1]")).getText());
+    }
 
 //                   for (int i = 0; i <= elementsList.size(); i++) {
 //
@@ -47,8 +49,29 @@ public class SearchBox extends BaseTest {
 //
 //
 //            }
+    @Test
+    public void tabBar() {
+            salesForce("mum2be0920@gmail.com", "Katakam1987");
+
+        List<WebElement> tleCount = driver.findElements(By.xpath(".//*[@id='tabBar']/li"));
+        System.out.println(tleCount.size());
+        for (int i= 0 ;i<tleCount.size();i++) {
+            System.out.println(tleCount.get(i).getText());
+
+        }
     }
-}
+    @Test
+    public void chat (){
+        salesForce("mum2be0920@gmail.com", "Katakam1987");
+        driver.findElement(By.xpath(".//*[@id='buddy_list_min_text']")).click();
+        driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
+        driver.findElement(By.xpath(".//*[@id='presence_buddy_search']")).sendKeys("Sravani");
+        driver.findElement(By.xpath(".//*[@id='roster_title_expanded']/div")).click();
+
+    }
+
+    }
+
 
 
 

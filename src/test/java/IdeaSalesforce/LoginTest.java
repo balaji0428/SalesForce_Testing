@@ -25,6 +25,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void enterValidCredentials() {
         salesForce("mum2be0920@gmail.com", "Katakam1987");
+        check()
         driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
         String username = driver.findElement(By.xpath(".//*[@id='userNavLabel']")).getText();
         System.out.println(username);
