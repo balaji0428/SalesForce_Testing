@@ -24,8 +24,8 @@ public class LoginTest extends BaseTest {
 //    }
     @Test
     public void enterValidCredentials() {
+        checkLoginStatus();
         salesForce("mum2be0920@gmail.com", "Katakam1987");
-        check()
         driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
         String username = driver.findElement(By.xpath(".//*[@id='userNavLabel']")).getText();
         System.out.println(username);
@@ -37,7 +37,8 @@ public class LoginTest extends BaseTest {
  @Test
     public void enterInvalidCredentials()
   {
-        salesForce("mum2be0920gmail.com", "katakam1987");
+      checkLoginStatus();
+      salesForce("mum2be0920gmail.com", "katakam1987");
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         String errormsg = driver.findElement(By.xpath(".//*[@id='error']")).getText();
         System.out.println(errormsg);
@@ -47,6 +48,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void salesRep()
     {
+        checkLoginStatus();
         salesForce("mum2be0920@gmail.com", "Katakam1987");
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.findElement(By.xpath(".//*[@id='sales-rep-choice']")).click();
@@ -57,7 +59,7 @@ public class LoginTest extends BaseTest {
         driver.findElement(By.xpath(".//*[@id='tsid-menuItems']/a[1]")).click();
         String sales = driver.findElement(By.xpath(".//*[@id='chatterTab']/div[1]/h1")).getText();
         System.out.println(sales);
-        Assert.assertEquals(sales, "BugFinder", "BugFinder");
+        Assert.assertEquals(sales, "BugFinder", "Valid Message");
 
         driver.quit();
     }
@@ -65,6 +67,7 @@ public class LoginTest extends BaseTest {
           @Test
                   public void sales()
           {
+              checkLoginStatus();
               salesForce("mum2be0920@gmail.com", "Katakam1987"); //Login Method
               String dropdown = driver.findElement(By.xpath(".//*[@id='tsidButton']")).getText();
               Assert.assertEquals(dropdown, "Sales", "Sales");
@@ -75,6 +78,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void verifyUserIsLoggedIn()
     {
+        checkLoginStatus();
         salesForce("mum2be0920@gmail.com", "Katakam1987");
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         List<WebElement> webObject = driver.findElements(By.xpath(".//*[@id='userNavLabel']"));
@@ -92,8 +96,8 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void sfChatter() {
+        checkLoginStatus();
         salesForce("mum2be0920@gmail.com", "Katakam1987");
-
         String sfChatter = driver.findElement(By.xpath(".//*[@id='tsid-menuItems']/a[1]")).getText();
         Assert.assertEquals("Salesforce Chatter", "Salesforce Chatter");
         System.out.println(sfChatter);
@@ -102,6 +106,7 @@ public class LoginTest extends BaseTest {
         @Test
         public void marketing()
         {
+            checkLoginStatus();
             salesForce("mum2be0920@gmail.com", "Katakam1987");
 
           String marketing = driver.findElement(By.xpath(".//*[@id='tsid-menuItems']/a[2]")).getText();
@@ -112,6 +117,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void callCenter()
     {
+        checkLoginStatus();
         salesForce("mum2be0920@gmail.com", "Katakam1987");
 
 
@@ -123,6 +129,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void checkout()
     {
+        checkLoginStatus();
         salesForce("mum2be0920@gmail.com", "Katakam1987");
 
           String checkout = driver.findElement(By.xpath(".//*[@id='tsid-menuItems']/a[4]")).getText();
@@ -134,8 +141,8 @@ public class LoginTest extends BaseTest {
     @Test
     public void appExchange()
     {
+        checkLoginStatus();
         salesForce("mum2be0920@gmail.com", "Katakam1987");
-
           String appExchange = driver.findElement(By.xpath(".//*[@id='tsid-menuItems']/a[5]")).getText();
           Assert.assertEquals("AppExchange", "AppExchange");
           System.out.println(appExchange);
@@ -144,9 +151,8 @@ public class LoginTest extends BaseTest {
     @Test
     public void devCommunity()
     {
+        checkLoginStatus();
         salesForce("mum2be0920@gmail.com", "Katakam1987");
-
-
           String devCommunity = driver.findElement(By.xpath(".//*[@id='tsid-menuItems']/a[6]")).getText();
           Assert.assertEquals("Developer Community", "Developer Community");
           System.out.println(devCommunity);
@@ -156,8 +162,8 @@ public class LoginTest extends BaseTest {
     @Test
     public void successCommunity()
     {
+        checkLoginStatus();
         salesForce("mum2be0920@gmail.com", "Katakam1987");
-
           String successCommunity = driver.findElement(By.xpath(".//*[@id='tsid-menuItems']/a[7]")).getText();
           Assert.assertEquals("Success Community", "Success Community");
           System.out.println(successCommunity);

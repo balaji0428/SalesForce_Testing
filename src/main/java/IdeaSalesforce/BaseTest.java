@@ -2,12 +2,14 @@ package IdeaSalesforce;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -17,7 +19,8 @@ import java.util.concurrent.TimeUnit;
 public class BaseTest {
     public WebDriver driver = null;
     protected WebDriver localDriver = null;
-    private String chromePath = "";
+    private String chromePath = "C:\\Users\\BalajiK1\\Desktop\\VeriFone\\Idea_SF\\Drivers\\chromedriver_win32";
+    private String iExplorerPath = "C:\\Users\\BalajiK1\\Desktop\\VeriFone\\Idea_SF\\Drivers\\IEDriverServer_x64_2.48.0";
     private String baseUrl = "http://www.salesforce.com/";
 
     @BeforeTest
@@ -30,7 +33,7 @@ public class BaseTest {
 @AfterTest
 public void tearDown()
 {
-    driver.close();
+   // driver.close();
     driver.quit();
 }
     public WebDriver getBrowser(String browserType)
@@ -46,16 +49,26 @@ public void tearDown()
         }
         else if(browserType.equals("ie"))
         {
-
+           System.setProperty("webdriver.ie.driver" , iExplorerPath);
+            localDriver = new InternetExplorerDriver();
         }
         localDriver.manage().window().maximize();
         return driver = localDriver;
 
     }
+
     public void checkLoginStatus()
     {
+        List<WebElement> login = driver.findElements(By.xpath(".//*[@id='userNavLabel']"));
+        if (login.equals(".//*[@id='userNavLabel']")) {
+            driver.findElement(By.xpath(".//*[@id='userNav-arrow']")).click();
+            driver.findElement(By.xpath(".//*[@id='userNav-menuItems']/a[4]")).click();
+        }
+        else {
+            invoke();
+        }
+        }
 
-    }
 
     public void salesForce(String username, String password) {
 
