@@ -1,6 +1,7 @@
-target\
-test-output\
+target/
+test-output/
 *.jar
 *.iml
 *.ipr
 *.iws
+.idea/
